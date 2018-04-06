@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "description": "Домашнее задание #9 в ШРИ Яндекса 2018.",
   "scripts": {
+    "build-flow": "babel src/flow -d dist/flow",
+    "build-ts": "tsc",
     "flow": "flow",
-    "build-flow": "babel src/flow -d lib/flow"
+    "tslint": "tslint -c tslint.json -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -13,6 +15,9 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
-    "flow-bin": "^0.69.0"
-  }
+    "flow-bin": "^0.69.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.1"
+  },
+  "license": "ISC"
 }

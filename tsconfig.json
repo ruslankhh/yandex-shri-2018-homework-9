@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/typescript",
+    "rootDir": "src/typescript",
+    "sourceMap":  true
+  },
+
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test"
+  ],
+}
