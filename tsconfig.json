@@ -2,9 +2,11 @@
   "compilerOptions": {
     "outDir": "dist/typescript",
     "rootDir": "src/typescript",
-    "sourceMap":  true
+    "sourceMap":  true,
+    "lib": [
+      "es2015"
+    ]
   },
-
   "exclude": [
     "node_modules",
     "dist",
