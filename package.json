@@ -5,8 +5,9 @@
   "scripts": {
     "build-flow": "babel src/flow -d dist/flow",
     "build-ts": "tsc",
-    "flow": "flow",
-    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "lint-flow": "flow --include-warnings",
+    "lint-ts": "tslint -c tslint.json -p tsconfig.json",
+    "watch-flow": "watch 'npm run lint-flow' src/flow",
     "watch-ts": "tsc -w"
   },
   "repository": {
@@ -19,7 +20,8 @@
     "flow-bin": "^0.69.0",
     "tslint": "^5.9.1",
     "tslint-config-semistandard": "^7.0.0",
-    "typescript": "^2.8.1"
+    "typescript": "^2.8.1",
+    "watch": "^1.0.2"
   },
   "license": "ISC"
 }
