@@ -1,15 +1,30 @@
 {
   "compilerOptions": {
-    "outDir": "dist/typescript",
-    "rootDir": "src/typescript",
-    "sourceMap":  true,
+    "alwaysStrict": true,
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
     "lib": [
       "es2015"
-    ]
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist/typescript",
+    "pretty": true,
+    "rootDir": "src/typescript",
+    "sourceMap": true,
+    "target": "es5"
   },
   "exclude": [
     "node_modules",
     "dist",
     "test"
-  ],
+  ]
 }
