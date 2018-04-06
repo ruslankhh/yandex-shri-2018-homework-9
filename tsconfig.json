@@ -21,6 +21,7 @@
     "rootDir": "src/typescript",
     "sourceMap": true,
     "strict": true,
+    "strictNullChecks": true,
     "target": "es5"
   },
   "exclude": [
