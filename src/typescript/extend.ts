@@ -30,19 +30,19 @@ export interface IObject extends Object {
  *      `null` или `undefined` игнорируются.
  * @returns {Object}
  */
-function extend (first: boolean | IObject, ...tail: IObject[]): IObject {
+function extend (head: boolean | IObject, ...tail: IObject[]): IObject {
   let target: any;
   let deep: boolean;
   let i: number;
 
   // Обрабатываем ситуацию глубокого копирования.
-  if (typeof first === 'boolean') {
-    deep = first;
+  if (typeof head === 'boolean') {
+    deep = head;
     target = tail[0];
     i = 1;
   } else {
     deep = false;
-    target = first;
+    target = head;
     i = 0;
   }
 
