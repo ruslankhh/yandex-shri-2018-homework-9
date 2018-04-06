@@ -8,14 +8,17 @@ const toString = Object.prototype.toString;
  * @param {Object} obj
  * @returns {Boolean}
  */
-function isPlainObject (obj: any) {
+function isPlainObject (obj: object): boolean {
   if (toString.call(obj) !== '[object Object]') {
     return false;
   }
 
   const prototype = Object.getPrototypeOf(obj);
-  return prototype === null ||
-        prototype === Object.prototype;
+  return prototype === null || prototype === Object.prototype;
+}
+
+export interface IObject extends Object {
+  [key: string]: any;
 }
 
 /**
@@ -27,36 +30,38 @@ function isPlainObject (obj: any) {
  *      `null` или `undefined` игнорируются.
  * @returns {Object}
  */
-const extend = function extend (...args: any[]) {
-  let target = args[0];
-  let deep;
-  let i;
+function extend (first: boolean | IObject, ...tail: IObject[]): IObject {
+  let target: any;
+  let deep: boolean;
+  let i: number;
 
   // Обрабатываем ситуацию глубокого копирования.
-  if (typeof target === 'boolean') {
-    deep = target;
-    target = args[1];
-    i = 2;
+  if (typeof first === 'boolean') {
+    deep = first;
+    target = tail[0];
+    i = 1;
   } else {
     deep = false;
-    i = 1;
+    target = first;
+    i = 0;
   }
 
-  for (; i < arguments.length; i++) {
-    const obj = args[i];
+  for (; i < tail.length; i++) {
+    const obj: IObject = tail[i];
+
     if (!obj) {
       continue;
     }
 
     for (const key in obj) {
       if (hasOwnProperty.call(obj, key)) {
-        const val = obj[key];
-        const isArray = val && Array.isArray(val);
+        const val: any = obj[key];
+        const isArray: boolean = val && Array.isArray(val);
 
         // Копируем "плоские" объекты и массивы рекурсивно.
         if (deep && val && (isPlainObject(val) || isArray)) {
-          const src = target[key];
-          let clone;
+          const src: any = target[key];
+          let clone: IObject;
           if (isArray) {
             clone = src && Array.isArray(src) ? src : [];
           } else {
@@ -71,6 +76,6 @@ const extend = function extend (...args: any[]) {
   }
 
   return target;
-};
+}
 
 export default extend;
