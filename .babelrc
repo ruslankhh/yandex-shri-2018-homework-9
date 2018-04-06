@@ -1,5 +1,10 @@
 {
   "presets": [
-    "flow"
+    "env",
+    "flow",
+    "stage-3"
+  ],
+  "plugins": [
+    "add-module-exports"
   ]
 }

@@ -1,5 +1,7 @@
-const hasOwnProperty = Object.prototype.hasOwnProperty;
-const toString = Object.prototype.toString;
+'use strict';
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var toString = Object.prototype.toString;
 
 /**
  * Проверяет, что переданный объект является "плоским" (т.е. созданным с помощью "{}"
@@ -8,12 +10,12 @@ const toString = Object.prototype.toString;
  * @param {Object} obj
  * @returns {Boolean}
  */
-function isPlainObject (obj) {
+function isPlainObject(obj) {
   if (toString.call(obj) !== '[object Object]') {
     return false;
   }
 
-  const prototype = Object.getPrototypeOf(obj);
+  var prototype = Object.getPrototypeOf(obj);
   return prototype === null || prototype === Object.prototype;
 }
 
@@ -26,10 +28,14 @@ function isPlainObject (obj) {
  *      `null` или `undefined` игнорируются.
  * @returns {Object}
  */
-const extend = function extend (...args) {
-  let target = args[0];
-  let deep;
-  let i;
+var extend = function extend() {
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  var target = args[0];
+  var deep = void 0;
+  var i = void 0;
 
   // Обрабатываем ситуацию глубокого копирования.
   if (typeof target === 'boolean') {
@@ -42,20 +48,20 @@ const extend = function extend (...args) {
   }
 
   for (; i < arguments.length; i++) {
-    const obj = args[i];
+    var obj = args[i];
     if (!obj) {
       continue;
     }
 
-    for (const key in obj) {
+    for (var key in obj) {
       if (hasOwnProperty.call(obj, key)) {
-        const val = obj[key];
-        const isArray = val && Array.isArray(val);
+        var val = obj[key];
+        var isArray = val && Array.isArray(val);
 
         // Копируем "плоские" объекты и массивы рекурсивно.
         if (deep && val && (isPlainObject(val) || isArray)) {
-          const src = target[key];
-          let clone;
+          var src = target[key];
+          var clone = void 0;
           if (isArray) {
             clone = src && Array.isArray(src) ? src : [];
           } else {
