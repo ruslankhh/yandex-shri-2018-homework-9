@@ -9,9 +9,9 @@
     "lint-js": "eslint src/es6/**/*.js",
     "lint-flow": "flow --include-warnings",
     "lint-ts": "tslint -c tslint.json -p tsconfig.json",
-    "watch-js": "watch 'npm run lint-js' src/es6",
+    "watch-js": "watch 'npm run lint-js && npm run test-js' src/es6 test/es6",
     "watch-flow": "watch 'npm run lint-flow' src/flow",
-    "watch-ts": "watch 'npm run lint-ts' src/typescript",
+    "watch-ts": "watch 'npm run lint-ts && npm run test-ts' src/typescript  test/typescript",
     "test-js": "mocha test/es6/**/*.test.js",
     "test-ts": "mocha -r ts-node/register test/typescript/**/*.test.ts"
   },
