@@ -9,18 +9,22 @@
     "lint-ts": "tslint -c tslint.json -p tsconfig.json",
     "watch-flow": "watch 'npm run lint-flow' src/flow",
     "watch-ts": "tsc -w",
-    "test-js": "mocha test/es6/**/*.test.js"
+    "test-js": "mocha test/es6/**/*.test.js",
+    "test-ts": "mocha -r ts-node/register test/typescript/**/*.test.ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ruslankhh/yandex-shri-2018-homework-9.git"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^5.0.0",
     "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
     "chai": "^4.1.2",
     "flow-bin": "^0.69.0",
     "mocha": "^5.0.5",
+    "ts-node": "^5.0.1",
     "tslint": "^5.9.1",
     "tslint-config-semistandard": "^7.0.0",
     "typescript": "^2.8.1",

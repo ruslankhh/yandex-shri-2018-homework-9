@@ -8,7 +8,7 @@ const toString = Object.prototype.toString;
  * @param {Object} obj
  * @returns {Boolean}
  */
-function isPlainObject (obj) {
+function isPlainObject (obj: any) {
   if (toString.call(obj) !== '[object Object]') {
     return false;
   }
@@ -27,7 +27,7 @@ function isPlainObject (obj) {
  *      `null` или `undefined` игнорируются.
  * @returns {Object}
  */
-const extend = function extend (...args) {
+const extend = function extend (...args: any[]) {
   let target = args[0];
   let deep;
   let i;
@@ -72,3 +72,5 @@ const extend = function extend (...args) {
 
   return target;
 };
+
+export default extend;

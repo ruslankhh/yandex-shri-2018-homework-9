@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 var toString = Object.prototype.toString;
 /**
@@ -71,4 +73,5 @@ var extend = function extend() {
     }
     return target;
 };
+exports.default = extend;
 //# sourceMappingURL=extend.js.map
