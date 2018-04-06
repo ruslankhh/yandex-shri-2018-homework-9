@@ -72,3 +72,5 @@ const extend = function extend (...args) {
 
   return target;
 };
+
+module.exports = extend;
