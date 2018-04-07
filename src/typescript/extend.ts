@@ -14,6 +14,7 @@ function isPlainObject (obj: object): boolean {
   }
 
   const prototype = Object.getPrototypeOf(obj);
+
   return prototype === null || prototype === Object.prototype;
 }
 
@@ -68,6 +69,7 @@ function extend (head: boolean | IObject, ...tail: IObject[]): IObject {
           } else {
             clone = src && isPlainObject(src) ? src : {};
           }
+
           target[key] = extend(deep, clone, val);
         } else {
           target[key] = val;
