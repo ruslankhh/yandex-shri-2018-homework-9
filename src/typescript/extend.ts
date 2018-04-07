@@ -31,7 +31,7 @@ export interface IObject extends Object {
  * @returns {Object}
  */
 function extend (head: boolean | IObject, ...tail: IObject[]): IObject {
-  let target: boolean | IObject;
+  let target: IObject;
   let deep: boolean;
   let i: number;
 
@@ -62,6 +62,7 @@ function extend (head: boolean | IObject, ...tail: IObject[]): IObject {
         if (deep && val && (isPlainObject(val) || isArray)) {
           const src: any = target[key];
           let clone: IObject;
+
           if (isArray) {
             clone = src && Array.isArray(src) ? src : [];
           } else {
