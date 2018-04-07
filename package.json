@@ -13,7 +13,7 @@
     "watch-flow": "watch 'npm run test-flow' src/flow test/flow",
     "watch-ts": "watch 'npm run test-ts' src/typescript test/typescript",
     "test-js": "mocha test/es6/**/*.test.js",
-    "test-flow": "mocha test/flow/**/*.test.js",
+    "test-flow": "mocha --require babel-core/register test/flow/**/*.test.js",
     "test-ts": "mocha -r ts-node/register test/typescript/**/*.test.ts"
   },
   "repository": {
