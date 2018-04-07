@@ -9,14 +9,18 @@ const toString = Object.prototype.toString;
  * @param {Object} obj
  * @returns {Boolean}
  */
-function isPlainObject (obj) {
+function isPlainObject (obj: Object): boolean {
   if (toString.call(obj) !== '[object Object]') {
     return false;
   }
 
-  const prototype = Object.getPrototypeOf(obj);
-  return prototype === null ||
-        prototype === Object.prototype;
+  const prototype: Object = Object.getPrototypeOf(obj);
+
+  return prototype === null || prototype === Object.prototype;
+}
+
+export interface IObject extends Object {
+  [key: string]: any;
 }
 
 /**
@@ -28,41 +32,45 @@ function isPlainObject (obj) {
  *      `null` или `undefined` игнорируются.
  * @returns {Object}
  */
-const extend = function extend (...args) {
-  let target = args[0];
-  let deep;
-  let i;
+const extend = function extend (head: boolean | IObject, ...tail: IObject[]): IObject {
+  let target: IObject;
+  let deep: boolean;
+  let i: number;
 
   // Обрабатываем ситуацию глубокого копирования.
-  if (typeof target === 'boolean') {
-    deep = target;
-    target = args[1];
-    i = 2;
+  if (typeof head === 'boolean') {
+    deep = head;
+    target = tail[0];
+    i = 1;
   } else {
     deep = false;
-    i = 1;
+    target = head;
+    i = 0;
   }
 
-  for (; i < arguments.length; i++) {
-    const obj = args[i];
+  for (; i < tail.length; i++) {
+    const obj: IObject = tail[i];
+
     if (!obj) {
       continue;
     }
 
     for (const key in obj) {
       if (hasOwnProperty.call(obj, key)) {
-        const val = obj[key];
-        const isArray = val && Array.isArray(val);
+        const val: any = obj[key];
+        const isArray: boolean = val && Array.isArray(val);
 
         // Копируем "плоские" объекты и массивы рекурсивно.
         if (deep && val && (isPlainObject(val) || isArray)) {
-          const src = target[key];
-          let clone;
+          const src: any = target[key];
+          let clone: any[] | Object;
+
           if (isArray) {
             clone = src && Array.isArray(src) ? src : [];
           } else {
             clone = src && isPlainObject(src) ? src : {};
           }
+
           target[key] = extend(deep, clone, val);
         } else {
           target[key] = val;
@@ -74,4 +82,4 @@ const extend = function extend (...args) {
   return target;
 };
 
-export default extend;
+module.exports = extend;
