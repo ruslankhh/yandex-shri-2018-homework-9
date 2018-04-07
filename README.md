@@ -16,6 +16,24 @@
 - [typescriptlang.org/play](https://www.typescriptlang.org/play)
 - [flow.org/try](https://flow.org/try)
 
+## Запуск
+
+```bash
+npm i
+```
+
+Для линтинга:
+
+```bash
+npm run lint
+```
+
+Для тестов:
+
+```bash
+npm test
+```
+
 ## Выполнение задания
 
 - Настроил инфраструктуру для работы с TypeScript и Flow.
