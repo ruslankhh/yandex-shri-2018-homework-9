@@ -31,7 +31,7 @@ export interface IObject extends Object {
  * @returns {Object}
  */
 function extend (head: boolean | IObject, ...tail: IObject[]): IObject {
-  let target: any;
+  let target: boolean | IObject;
   let deep: boolean;
   let i: number;
 
