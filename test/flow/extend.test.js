@@ -1,4 +1,4 @@
-const extend = require('./../../src/flow/extend.flow');
+const extend = require('./../../src/flow/extend');
 const { expect } = require('chai');
 const { describe, it } = require('mocha');
 
