@@ -14,8 +14,7 @@ function isPlainObject(obj) {
         return false;
     }
     var prototype = Object.getPrototypeOf(obj);
-    return prototype === null ||
-        prototype === Object.prototype;
+    return prototype === null || prototype === Object.prototype;
 }
 /**
  * Копирует перечислимые свойства одного или нескольких объектов в целевой объект.
@@ -26,26 +25,27 @@ function isPlainObject(obj) {
  *      `null` или `undefined` игнорируются.
  * @returns {Object}
  */
-var extend = function extend() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
+function extend(head) {
+    var tail = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        tail[_i - 1] = arguments[_i];
     }
-    var target = args[0];
+    var target;
     var deep;
     var i;
     // Обрабатываем ситуацию глубокого копирования.
-    if (typeof target === 'boolean') {
-        deep = target;
-        target = args[1];
-        i = 2;
+    if (typeof head === 'boolean') {
+        deep = head;
+        target = tail[0];
+        i = 1;
     }
     else {
         deep = false;
-        i = 1;
+        target = head;
+        i = 0;
     }
-    for (; i < arguments.length; i++) {
-        var obj = args[i];
+    for (; i < tail.length; i++) {
+        var obj = tail[i];
         if (!obj) {
             continue;
         }
@@ -72,6 +72,6 @@ var extend = function extend() {
         }
     }
     return target;
-};
+}
 exports.default = extend;
 //# sourceMappingURL=extend.js.map

@@ -1,3 +1,6 @@
+export interface IObject extends Object {
+    [key: string]: any;
+}
 /**
  * Копирует перечислимые свойства одного или нескольких объектов в целевой объект.
  *
@@ -7,5 +10,5 @@
  *      `null` или `undefined` игнорируются.
  * @returns {Object}
  */
-declare const extend: (...args: any[]) => any;
+declare function extend(head: boolean | IObject, ...tail: IObject[]): IObject;
 export default extend;
