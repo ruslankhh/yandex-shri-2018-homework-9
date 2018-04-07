@@ -5,12 +5,19 @@
     "mocha": true
   },
   "extends": [
-    "semistandard"
+    "semistandard",
+    "plugin:flowtype/recommended"
   ],
   "plugins": [
+    "flowtype",
     "import",
     "node",
     "promise",
     "standard"
-  ]
+  ],
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  }
 }
